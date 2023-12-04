@@ -3,8 +3,8 @@
 import java.util.Scanner;
 
 public abstract class Clase_Abstractaa {
-	String numero_cuenta;
-    protected int transacciones, retiro, deposito,transferencia;
+	int numero_cuenta;
+    protected int transacciones, retiro, deposito, transferencia;
     private static int saldo;
     Scanner entrada = new Scanner(System.in);
 
@@ -17,14 +17,12 @@ public abstract class Clase_Abstractaa {
                 System.out.println(" Buenas tardes esta en un cajero automatico de BBVA");
                 System.out.println(" Hoy es 31/10/2023");
                 System.out.println(" Porfavor seleccione una opción:");
-                System.out.println("    1. Consulta de saldo.");
-                System.out.println("    2. Retiro de efectivo.");
-                System.out.println("    3. Deposito de efectivo.");
-                System.out.println("    4. Hacer una transferencia");
-                System.out.println("    5. Salir.");
+                System.out.println("    1. Retiro de efectivo.");
+                System.out.println("    2. Hacer una transferencia");
+                System.out.println("    3. Salir.");
                 seleccion = entrada.nextInt();
 
-                if (seleccion >= 1 && seleccion <= 5) {
+                if (seleccion >= 1 && seleccion <= 3) {
                     bandera = 1;
                 } else {
                     System.out.println("=================================================");
@@ -34,18 +32,12 @@ public abstract class Clase_Abstractaa {
             } while (bandera == 0);
             
             if(seleccion == 1){
-            	Clase_Abstractaa mensajero = new Consulta();
-                mensajero.Transacciones();
-            }else if(seleccion == 2){
             	Clase_Abstractaa mensajero = new Retiro();
                 mensajero.Transacciones();
-            } else if(seleccion == 3){
-            	Clase_Abstractaa mensajero = new Deposito();
-                mensajero.Transacciones();
-            } else if(seleccion == 4){
+            }else if(seleccion == 2){
             	Clase_Abstractaa mensajero = new Transferencia();
                 mensajero.Transacciones();
-            } else if(seleccion == 5){
+            } else if(seleccion == 3){
                 System.out.println("==========================");
                 System.out.println("Gracias, vuelva pronto.");
                 System.out.println("==========================");
@@ -54,12 +46,12 @@ public abstract class Clase_Abstractaa {
         } while (bandera != 2);
     }
     public void Numero_cuenta(){
-    	 numero_cuenta = entrada.nextLine();
+    	 numero_cuenta = entrada.nextInt();
     }
 	public void Retiro(){
         retiro = entrada.nextInt();
     }
-    
+ 
     public void Deposito(){
         deposito = entrada.nextInt();
     }
