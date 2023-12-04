@@ -1,4 +1,3 @@
-package Proyecto_Terminado;
 
 
 public class Retiro extends Clase_Abstractaa {

@@ -1,6 +1,4 @@
-package Proyecto_Terminado;
 
-import Proyecto.ClasePadre_Abstracta;
 
 public class Deposito extends Clase_Abstractaa{
     
