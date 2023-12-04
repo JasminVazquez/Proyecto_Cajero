@@ -1,7 +1,5 @@
 
-
 public class Retiro extends Clase_Abstractaa {
-
     @Override
     public void Transacciones() {
     	
@@ -11,9 +9,9 @@ public class Retiro extends Clase_Abstractaa {
     		            transacciones = getSaldo();
     		            setSaldo(transacciones - retiro);
     		            System.out.println("====================================");
-    		            System.out.println("=================BBVA===============");
-    		            System.out.println("				Debito				");
-    		            System.out.println("Se relalizo una Consulta el 31/10/2023");
+    		            System.out.println("====================================");
+    		            System.out.println("\tDebito\t");
+    		            System.out.println("Se relalizo una retiro el " + fechaActual );
     		            System.out.println("Retiraste : " + retiro);
     		            System.out.println("Tu saldo actual es: " + getSaldo());
     		            System.out.println("====================================");

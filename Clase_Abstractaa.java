@@ -1,8 +1,10 @@
 
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public abstract class Clase_Abstractaa {
+	LocalDate fechaActual = LocalDate.now();
 	int numero_cuenta;
     protected int transacciones, retiro, deposito, transferencia;
     private static int saldo;
@@ -14,8 +16,7 @@ public abstract class Clase_Abstractaa {
         String Nombre = "";
         do {
             do {
-                System.out.println(" Buenas tardes esta en un cajero automatico de BBVA");
-                System.out.println(" Hoy es 31/10/2023");
+                System.out.println(" Hoy es " + fechaActual);
                 System.out.println(" Porfavor seleccione una opción:");
                 System.out.println("    1. Retiro de efectivo.");
                 System.out.println("    2. Hacer una transferencia");
@@ -63,9 +64,16 @@ public abstract class Clase_Abstractaa {
     public int getSaldo(){
         return saldo;
     }
-    
     public void setSaldo(int saldo){
         this.saldo = saldo;
     }
+    
+    public LocalDate getFecha(){
+        return fechaActual;
+    }
+    public void setFecha(LocalDate feDate){
+        this.fechaActual = fechaActual;
+    }
+    
     
 }
