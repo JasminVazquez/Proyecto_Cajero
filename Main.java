@@ -235,7 +235,7 @@ public static CuentaDebito buscarCuentaPorNumero(int numeroCuenta) {
     public static void inicializarDatos() {
         // Crear algunos clientes y cuentas de débito de ejemplo
         Cliente cliente1 = new Cliente(1, "Carlos", "Calle A");
-        Cliente cliente2 = new Cliente(2, "María", "Calle B");
+        Cliente cliente2 = new Cliente(2, "Maria", "Calle B");
         
 
         CuentaDebito cuenta1 = new CuentaDebito("Cuenta de Ahorro", cliente1, 101);
@@ -254,5 +254,5 @@ public static CuentaDebito buscarCuentaPorNumero(int numeroCuenta) {
         
     }
 
-    // Agregar métodos para operaciones del cajero (retiro, transferencia, imprimir ticket, etc.)
+
 }
