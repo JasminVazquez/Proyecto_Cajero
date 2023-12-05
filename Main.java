@@ -113,30 +113,86 @@ public static void mostrarOpcionesOperaciones(Cliente cliente) {
             break;
             
         case 2:
-            System.out.println("\nUso de cuenta de débito existente:");
-            System.out.print("Ingrese el número de cuenta de débito: ");
-            int numeroCuentaExistente = entrada.nextInt();
-            entrada.nextLine(); 
-        
-            // Buscar la cuenta de débito en la lista utilizando su número
-            CuentaDebito cuentaExistente = buscarCuentaPorNumero(numeroCuentaExistente);
-        
-            if (cuentaExistente != null && cuentaExistente.getCliente().equals(cliente)) {
-                System.out.println("¡Usted está utilizando la cuenta: " + cuentaExistente.getNumeroCuenta() +
-                        " - " + cuentaExistente.getTipo() + "!");
-                // Implementar operaciones adicionales utilizando esta cuenta
-            } else {
-                System.out.println("La cuenta no existe o no está asociada a este cliente.");
+        System.out.println("\nUso de cuenta de débito existente:");
+        System.out.print("Ingrese el número de cuenta de débito: ");
+        int numeroCuentaExistente = entrada.nextInt();
+        entrada.nextLine(); // Limpiar el buffer de entrada
+    
+        // Buscar la cuenta de débito en la lista utilizando su número
+        CuentaDebito cuentaExistente = buscarCuentaPorNumero(numeroCuentaExistente);
+    
+        if (cuentaExistente != null && cuentaExistente.getCliente().equals(cliente)) {
+            System.out.println("¡Usted está utilizando la cuenta: " + cuentaExistente.getNumeroCuenta() +
+                    " - " + cuentaExistente.getTipo() + "!");
+    
+            System.out.println("\nOpciones de transacción:");
+            System.out.println("1. Retiro");
+            System.out.println("2. Transferencia");
+            System.out.println("0. Volver al menú principal");
+    
+            System.out.print("Ingrese la opción deseada: ");
+            int opcionTransaccion = entrada.nextInt();
+            entrada.nextLine(); // Limpiar el buffer de entrada
+    
+            switch (opcionTransaccion) {
+                case 1:
+                    System.out.print("Ingrese el monto a retirar: ");
+                    int montoRetiro = entrada.nextInt();
+                    entrada.nextLine(); 
+                
+                    // Verificar si hay suficiente saldo para realizar el retiro
+                    if (montoRetiro > cuentaExistente.getSaldo()) {
+                        System.out.println("Fondos insuficientes. No se puede realizar el retiro.");
+                    } else {
+                        // Actualizar el saldo restando el monto del retiro
+                        double nuevoSaldo = cuentaExistente.getSaldo() - montoRetiro;
+                        cuentaExistente.setSaldo((int) nuevoSaldo);
+                
+                        // Mostrar mensaje de confirmación
+                        System.out.println("Retiro de $" + montoRetiro + " realizado con éxito.");
+                        System.out.println("Saldo actual: $" + cuentaExistente.getSaldo());
+
+                        generarRecibo(cuentaExistente, montoRetiro, "Retiro");
+                    }
+                    break;
+                case 2:
+                    System.out.print("Ingrese el número de cuenta a la que transferir: ");
+                    int cuentaDestino = entrada.nextInt();
+                    entrada.nextLine(); // Limpiar el buffer de entrada
+                    
+                    System.out.print("Ingrese el monto a transferir: ");
+                    double montoTransferencia = entrada.nextDouble();
+                    entrada.nextLine(); // Limpiar el buffer de entrada
+                    
+                    // Implementa la lógica para realizar una transferencia de la cuenta
+                    // Actualiza los saldos de ambas cuentas, realiza las validaciones necesarias, etc.
+                    // Puedes imprimir un mensaje de confirmación o error
+                    
+                    // Ejemplo:
+                    System.out.println("Transferencia de $" + montoTransferencia + " realizada con éxito a la cuenta " + cuentaDestino + ".");
+                    break;
+                case 0:
+                    // Volver al menú principal
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    break;
             }
-            break;
-        case 0:
-            System.out.println("Sesión cerrada. ¡Hasta luego!");
-            break;
-        default:
-            System.out.println("Opción no válida. Intente de nuevo.");
-            mostrarOpcionesOperaciones(cliente); // Mostrar opciones nuevamente
-            break;
+        } else {
+            System.out.println("La cuenta no existe o no está asociada a este cliente.");
+        }
+        break;
     }
+}
+//funcion para generar recibo
+public static void generarRecibo(CuentaDebito cuenta, double monto, String tipoTransaccion) {
+    System.out.println("************ RECIBO ************");
+    System.out.println("Cuenta: " + cuenta.getNumeroCuenta());
+    System.out.println("Cliente: " + cuenta.getCliente().getNombre());
+    System.out.println("Tipo de transacción: " + tipoTransaccion);
+    System.out.println("Monto: $" + monto);
+    System.out.println("Saldo actual: $" + cuenta.getSaldo());
+    System.out.println("************ ¡Gracias! ************");
 }
 // Función para generar un número de cuenta único
 public static int generarNumeroCuenta() {

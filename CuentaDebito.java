@@ -2,11 +2,13 @@ public class CuentaDebito {
     private String tipo;
     private Cliente cliente;
     private int numeroCuenta;
+    private int saldo;
     
     public CuentaDebito(String tipo, Cliente cliente, int numeroCuenta) {
         this.tipo = tipo;
         this.cliente = cliente;
         this.numeroCuenta = numeroCuenta;
+        saldo=1000;
     }
     
     // Métodos Get y Set para el tipo, cliente y número de cuenta
@@ -33,4 +35,13 @@ public class CuentaDebito {
     public void setNumeroCuenta(int numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+    
 }
