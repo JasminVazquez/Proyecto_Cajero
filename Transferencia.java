@@ -14,8 +14,8 @@ public class Transferencia extends Clase_Abstractaa {
                     System.out.println("=================BBVA===============");
                     System.out.println("=========Sucursal Chapultepec=======");
                     System.out.println("\t\tDebito\t\t");
-                    System.out.println("Se relalizo una Consulta el 31/10/2023");
-                    System.out.println("Transferencia");
+                    System.out.println("Se relalizo una trasferencia el 31/10/2023");
+                    System.out.println("Id Transferencia: 12900");
                     System.out.println("Monto : $" + transferencia);
                     System.out.println("Cuenta destino: "+ numero_cuenta);
                     System.out.println("Saldo actual: $" + getSaldo());
