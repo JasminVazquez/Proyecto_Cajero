@@ -2,6 +2,7 @@
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.UUID;
 
 public abstract class Clase_Abstractaa {
 	LocalDate fechaActual = LocalDate.now();
@@ -74,6 +75,5 @@ public abstract class Clase_Abstractaa {
     public void setFecha(LocalDate feDate){
         this.fechaActual = fechaActual;
     }
-    
-    
+   
 }
