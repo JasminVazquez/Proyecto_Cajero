@@ -156,20 +156,40 @@ public static void mostrarOpcionesOperaciones(Cliente cliente) {
                     }
                     break;
                 case 2:
-                    System.out.print("Ingrese el número de cuenta a la que transferir: ");
-                    int cuentaDestino = entrada.nextInt();
+                    System.out.print("Ingrese el número de cuenta destino: ");
+                    int numeroCuentaDestino = entrada.nextInt();
                     entrada.nextLine(); // Limpiar el buffer de entrada
-                    
+                
                     System.out.print("Ingrese el monto a transferir: ");
                     double montoTransferencia = entrada.nextDouble();
                     entrada.nextLine(); // Limpiar el buffer de entrada
-                    
-                    // Implementa la lógica para realizar una transferencia de la cuenta
-                    // Actualiza los saldos de ambas cuentas, realiza las validaciones necesarias, etc.
-                    // Puedes imprimir un mensaje de confirmación o error
-                    
-                    // Ejemplo:
-                    System.out.println("Transferencia de $" + montoTransferencia + " realizada con éxito a la cuenta " + cuentaDestino + ".");
+                
+                    // Buscar la cuenta de destino en la lista utilizando su número
+                    CuentaDebito cuentaDestino = buscarCuentaPorNumero(numeroCuentaDestino);
+                
+                    if (cuentaDestino != null && !cuentaDestino.equals(cuentaExistente)) {
+                        if (montoTransferencia > 0 && montoTransferencia <= cuentaExistente.getSaldo()) {
+                            // Realizar la transferencia
+                            double nuevoSaldoOrigen = cuentaExistente.getSaldo() - montoTransferencia;
+                            double nuevoSaldoDestino = cuentaDestino.getSaldo() + montoTransferencia;
+                
+                            cuentaExistente.setSaldo((int) nuevoSaldoOrigen);
+                            cuentaDestino.setSaldo((int) nuevoSaldoDestino);
+                
+                            System.out.println("Transferencia de $" + montoTransferencia + " a la cuenta " + cuentaDestino.getNumeroCuenta() + " realizada con éxito.");
+                            System.out.println("Saldo actual de la cuenta origen (" + cuentaExistente.getNumeroCuenta() + "): $" + cuentaExistente.getSaldo());
+                            System.out.println("Saldo actual de la cuenta destino (" + cuentaDestino.getNumeroCuenta() + "): $" + cuentaDestino.getSaldo());
+                
+                            // Generar recibo para cuenta origen
+                            generarRecibo(cuentaExistente, montoTransferencia, "Transferencia enviada a cuenta " + cuentaDestino.getNumeroCuenta());
+                            // Generar recibo para cuenta destino
+                            generarRecibo(cuentaDestino, montoTransferencia, "Transferencia recibida de cuenta " + cuentaExistente.getNumeroCuenta());
+                        } else {
+                            System.out.println("El monto a transferir debe ser mayor que 0 y no puede exceder el saldo disponible.");
+                        }
+                    } else {
+                        System.out.println("La cuenta destino no existe o es la misma que la cuenta origen.");
+                    }
                     break;
                 case 0:
                     // Volver al menú principal
