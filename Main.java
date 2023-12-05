@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
 	static Scanner entrada = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("----------------------------------------------------");
+        System.out.println("---------------------------------------------------");
         System.out.println("Ingrese su Nombre:	(Ana)");
         String Nombre = entrada.nextLine();
         System.out.println("Ingrese su Numero de cuenta:	(111)");
