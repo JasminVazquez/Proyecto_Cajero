@@ -12,7 +12,7 @@ public class Transferencia extends Clase_Abstractaa {
 		if (transferencia <= getSaldo()) {
 			transacciones = getSaldo();
 			setSaldo(transacciones - transferencia);
-			System.out.println("====================================");
+			System.out.println("===================================");
 			System.out.println("====================================");
 			System.out.println("\t\tDebito\t\t");
 			System.out.println("Número de Transacción: " + numeroTransaccion);
