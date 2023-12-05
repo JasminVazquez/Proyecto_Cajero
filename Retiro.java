@@ -12,6 +12,7 @@ public class Retiro extends Clase_Abstractaa {
     		            setSaldo(transacciones - retiro);
     		            System.out.println("====================================");
     		            System.out.println("=================BBVA===============");
+						System.out.println("=========Sucursal Chapultepec=======");
     		            System.out.println("				Debito				");
     		            System.out.println("Se relalizo una Consulta el 31/10/2023");
     		            System.out.println("Retiraste : " + retiro);

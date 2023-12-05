@@ -12,6 +12,7 @@ public class Transferencia extends Clase_Abstractaa {
                     setSaldo(transacciones - transferencia);
                     System.out.println("====================================");
                     System.out.println("=================BBVA===============");
+                    System.out.println("=========Sucursal Chapultepec=======");
                     System.out.println("\t\tDebito\t\t");
                     System.out.println("Se relalizo una Consulta el 31/10/2023");
                     System.out.println("Transferencia");
